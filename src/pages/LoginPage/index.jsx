@@ -1,11 +1,16 @@
 import { useForm } from "react-hook-form";
 import { FormInput } from "../../components/FormInput";
+import { Link } from "react-router-dom";
+import Logo from "../../assets/Logo.svg"
 
 export function LoginPage() {
   let{  handleSubmit } = useForm();
 
   return (
     <section>
+      <div>
+        <img src={Logo} alt="KenzieHub Logo" />
+      </div>
       <form>
         <h2>Login</h2>
         <FormInput
@@ -24,7 +29,7 @@ export function LoginPage() {
       </form>
       <div>
         <p>Ainda não possui conta?</p>
-        <button>Cadastre-se</button>
+        <Link to="/register">Cadastre-se</Link>
       </div>
     </section>
   );
