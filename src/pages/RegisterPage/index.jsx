@@ -1,11 +1,17 @@
 import { FormInput } from "../../components/FormInput";
+import Logo from "../../assets/Logo.svg"
+import { Link } from "react-router-dom";
 
 export function RegisterPage() {
   return (
     <section>
+        <div>
+            <img src={Logo} alt="KenzieHub Logo" />
+            <Link to="/">Voltar</Link>
+        </div>
       <div>
-        <h2></h2>
-        <p></p>
+        <h2>Crie sua conta</h2>
+        <p>Rápido e grátis, vamos nessa</p>
       </div>
       <form>
         <FormInput
@@ -45,8 +51,9 @@ export function RegisterPage() {
           placeholder="Fale sobre você"
         />
         <div>
+            <label htmlFor="module" defaultValue={"1"}>Selecionar Módulo</label>
           <select name="module">
-            <option value="1" selected>
+            <option value="1">
               Primeiro Módulo
             </option>
             <option value="2">Segundo Módulo</option>
