@@ -1,20 +1,25 @@
 import { useForm } from "react-hook-form";
+import { FormInput } from "../../components/FormInput";
 
 export function LoginPage() {
-
-    const {register, handleSubmit} = useForm();
+  let{  handleSubmit } = useForm();
 
   return (
     <section>
       <form>
-        <div>
-          <label htmlFor="email">E-mail</label>
-          <input type="email" name="email" {...register("email")}/>
-        </div>
-        <div>
-          <label htmlFor="password">Senha</label>
-          <input type="password" name="password" {...register("password")}/>
-        </div>
+        <h2>Login</h2>
+        <FormInput
+          name="email"
+          label="E-mail"
+          type="email"
+          placeholder="Digite seu e-mail"
+        />
+        <FormInput
+          name="password"
+          label="Senha"
+          type="password"
+          placeholder="Digite sua senha"
+        />
         <button type="submit">Entrar</button>
       </form>
       <div>
