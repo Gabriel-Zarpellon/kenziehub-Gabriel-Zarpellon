@@ -1,13 +1,28 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {api} from "../services/api.js";
+import { api } from "../services/api.js";
 
 export const UserContext = createContext({});
 
 export function UserProvider({ children }) {
   let [user, setUser] = useState(null);
+  let [userList, setUserList] = useState([]);
+
+  console.log(user);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    async function getUsers() {
+      try {
+        const { data } = await api.get("/users");
+        setUserList(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getUsers();
+  }, []);
 
   async function userRegister(formData) {
     try {
@@ -30,16 +45,15 @@ export function UserProvider({ children }) {
     }
   }
 
-  function userLogout(){
+  function userLogout() {
     localStorage.removeItem("@TOKEN");
     localStorage.removeItem("@USERID");
     setUser(null);
     navigate("/");
-
   }
 
   return (
-    <UserContext.Provider value={{ user, userRegister }}>
+    <UserContext.Provider value={{ user, userRegister, userLogin }}>
       {children}
     </UserContext.Provider>
   );
