@@ -1,9 +1,12 @@
+import { UserProvider } from "./providers/UserContext";
 import { RoutesMain } from "./routes/RoutesMain";
 
 function App() {
   return (
     <>
-      <RoutesMain />
+      <UserProvider>
+        <RoutesMain />
+      </UserProvider>
     </>
   );
 }
