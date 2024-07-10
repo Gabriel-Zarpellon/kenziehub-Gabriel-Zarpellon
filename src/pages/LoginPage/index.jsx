@@ -1,17 +1,24 @@
 import { useForm } from "react-hook-form";
 import { FormInput } from "../../components/FormInput";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/Logo.svg"
+import Logo from "../../assets/Logo.svg";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext";
 
 export function LoginPage() {
-  let{  handleSubmit } = useForm();
+  let { handleSubmit } = useForm();
+  let { userLogin } = useContext(UserContext);
+
+  async function submit(formData) {
+    userLogin(formData);
+  }
 
   return (
     <section>
       <div>
         <img src={Logo} alt="KenzieHub Logo" />
       </div>
-      <form>
+      <form onSubmit={handleSubmit(submit)}>
         <h2>Login</h2>
         <FormInput
           name="email"
