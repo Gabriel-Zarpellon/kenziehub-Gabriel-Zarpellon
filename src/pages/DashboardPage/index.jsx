@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
+import Logo from "../../assets/Logo.svg"
 
 export function DashboardPage() {
   let { user, userLogout } = useContext(UserContext);
