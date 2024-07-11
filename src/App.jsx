@@ -1,3 +1,4 @@
+import { TechProvider } from "./providers/TechContext";
 import { UserProvider } from "./providers/UserContext";
 import { RoutesMain } from "./routes/RoutesMain";
 
@@ -5,7 +6,9 @@ function App() {
   return (
     <>
       <UserProvider>
-        <RoutesMain />
+        <TechProvider>
+          <RoutesMain />
+        </TechProvider>
       </UserProvider>
     </>
   );
