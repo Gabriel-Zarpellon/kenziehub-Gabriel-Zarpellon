@@ -1,10 +1,17 @@
 import { useForm } from "react-hook-form";
 import { Modal } from "../../Modal";
 import { FormInput } from "../../FormInput";
+import { useContext } from "react";
+import { TechContext } from "../../../providers/TechContext";
 
-export function AddTechModal({ setIsAddTechOpen, children }) {
+export function AddTechModal({ setIsAddTechOpen }) {
   let { register, handleSubmit } = useForm();
-  async function submit(formData) {}
+  let { addTech } = useContext(TechContext);
+
+  async function submit(formData) {
+    addTech(formData);
+    setIsAddTechOpen(false);
+  }
   return (
     <Modal title="Cadastrar Tecnologia" setIsOpen={setIsAddTechOpen}>
       <form onSubmit={handleSubmit(submit)}>
@@ -12,7 +19,7 @@ export function AddTechModal({ setIsAddTechOpen, children }) {
           name="title"
           label="Nome"
           type="text"
-          placeholder="Digite aqui seu nome"
+          placeholder="Tecnologia"
           register={register}
         />
         <div>
