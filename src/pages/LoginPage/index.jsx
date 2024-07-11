@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
 
 export function LoginPage() {
-  let { handleSubmit } = useForm();
+  let { register, handleSubmit } = useForm();
   let { userLogin } = useContext(UserContext);
 
   async function submit(formData) {
@@ -25,12 +25,14 @@ export function LoginPage() {
           label="E-mail"
           type="email"
           placeholder="Digite seu e-mail"
+          register={register}
         />
         <FormInput
           name="password"
           label="Senha"
           type="password"
           placeholder="Digite sua senha"
+          register={register}
         />
         <button type="submit">Entrar</button>
       </form>
