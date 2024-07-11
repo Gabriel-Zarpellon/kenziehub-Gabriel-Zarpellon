@@ -2,9 +2,12 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../providers/UserContext";
 import Logo from "../../assets/Logo.svg";
 import { AddTechModal } from "../../components/TechList/AddTechModal";
+import { TechContext } from "../../providers/TechContext";
+import { TechList } from "../../components/TechList";
 
 export function DashboardPage() {
   let { user, userLogout } = useContext(UserContext);
+  let { techList } = useContext(TechContext);
   let [isAddTechOpen, setIsAddTechOpen] = useState(false);
 
   return (
@@ -19,8 +22,11 @@ export function DashboardPage() {
           <p>{user.course_module}</p>
         </section>
         <section>
-          <h2>Tecnologias</h2>
-          <button onClick={() => setIsAddTechOpen(true)}>+</button>
+          <div>
+            <h2>Tecnologias</h2>
+            <button onClick={() => setIsAddTechOpen(true)}>+</button>
+            {techList.length > 0 ? <TechList/> : null}
+          </div>
         </section>
         {isAddTechOpen ? (
           <AddTechModal setIsAddTechOpen={setIsAddTechOpen} />
