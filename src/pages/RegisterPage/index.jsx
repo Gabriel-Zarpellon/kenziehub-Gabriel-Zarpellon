@@ -11,7 +11,6 @@ export function RegisterPage() {
   const { userRegister } = useContext(UserContext);
 
   async function submit(formData) {
-    console.log(formData);
     userRegister(formData);
   }
   return (
@@ -25,27 +24,6 @@ export function RegisterPage() {
         <p>Rápido e grátis, vamos nessa</p>
       </div>
       <form onSubmit={handleSubmit(submit)}>
-        {/* <div>
-          <label htmlFor="name">Nome</label>
-          <input type="text" name="name" placeholder="" {...register("name")} />
-        </div>
-        <div>
-          <label htmlFor="email">E-mail</label>
-          <input type="email" name="email" placeholder="" {...register("email")} />
-        </div>
-        <div>
-          <label htmlFor="password">Senha</label>
-          <input type="password" name="password" placeholder="" {...register("password")} />
-        </div>
-        <div>
-          <label htmlFor="bio">Bio</label>
-          <input type="text" name="bio" placeholder="" {...register("bio")} />
-        </div>
-        <div>
-          <label htmlFor="contact">Contato</label>
-          <input type="text" name="contact" placeholder="" {...register("contact")} />
-        </div> */}
-        
         <FormInput
           name="name"
           label="Nome"
@@ -88,15 +66,15 @@ export function RegisterPage() {
           placeholder="Opção de contato"
           register={register}
         />
-        <div> 
-          <label htmlFor="course_module" defaultValue={"m1"}>
+        <div>
+          <label htmlFor="course_module" >
             Selecionar Módulo
           </label>
-          <select name="course_module" {...register("course_module")}>
-            <option value="m1">Primeiro módulo (Introdução ao Frontend)</option>
-            <option value="m2">Segundo módulo (Frontend Avançado)</option>
-            <option value="m3">Terceiro módulo (Introdução ao Backend)</option>
-            <option value="m4">Quarto módulo (Backend Avançado)</option>
+          <select name="course_module" defaultValue={"Primeiro módulo (Introdução ao Frontend)"} {...register("course_module")}>
+            <option value="Primeiro módulo (Introdução ao Frontend)">Primeiro módulo (Introdução ao Frontend)</option>
+            <option value="Segundo módulo (Frontend Avançado)">Segundo módulo (Frontend Avançado)</option>
+            <option value="Terceiro módulo (Introdução ao Backend)">Terceiro módulo (Introdução ao Backend)</option>
+            <option value="Quarto módulo (Backend Avançado)">Quarto módulo (Backend Avançado)</option>
           </select>
         </div>
         <button type="submit">Cadastrar</button>
