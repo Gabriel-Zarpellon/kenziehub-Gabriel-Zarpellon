@@ -25,9 +25,9 @@ export function RegisterPage() {
         <p>Rápido e grátis, vamos nessa</p>
       </div>
       <form onSubmit={handleSubmit(submit)}>
-        <div>
+        {/* <div>
           <label htmlFor="name">Nome</label>
-          <input type="text" name="name" placeholder="Nome" {...register("name")} />
+          <input type="text" name="name" placeholder="" {...register("name")} />
         </div>
         <div>
           <label htmlFor="email">E-mail</label>
@@ -44,44 +44,50 @@ export function RegisterPage() {
         <div>
           <label htmlFor="contact">Contato</label>
           <input type="text" name="contact" placeholder="" {...register("contact")} />
-        </div>
+        </div> */}
         
-        {/* <FormInput
+        <FormInput
           name="name"
           label="Nome"
           type="text"
           placeholder="Digite aqui seu nome"
+          register={register}
         />
         <FormInput
           name="email"
           label="E-mail"
           type="email"
           placeholder="Digite aqui seu e-mail"
+          register={register}
         />
         <FormInput
           name="password"
           label="Senha"
           type="password"
           placeholder="Digite aqui sua senha"
+          register={register}
         />
-        <FormInput
+        {/* <FormInput
           name="password2"
           label="Confirmar Senha"
           type="password"
           placeholder="Digite novamente sua senha"
-        />
+          register={register}
+        /> */}
         <FormInput
           name="bio"
           label="Bio"
           type="text"
           placeholder="Fale sobre você"
+          register={register}
         />
         <FormInput
           name="contact"
           label="Contato"
           type="text"
           placeholder="Opção de contato"
-        /> */}
+          register={register}
+        />
         <div> 
           <label htmlFor="course_module" defaultValue={"m1"}>
             Selecionar Módulo
