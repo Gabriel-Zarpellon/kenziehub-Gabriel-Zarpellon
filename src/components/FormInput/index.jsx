@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form"
 
-export function FormInput({name, label, type, placeholder}){
-    let { register } = useForm();
+export function FormInput({name, label, type, placeholder, register}){
+    
     return(
         <div>
             <label htmlFor={name}>{label}</label>
