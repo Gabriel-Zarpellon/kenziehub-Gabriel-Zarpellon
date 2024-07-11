@@ -6,28 +6,14 @@ export const UserContext = createContext({});
 
 export function UserProvider({ children }) {
   let [user, setUser] = useState(null);
-  let [userList, setUserList] = useState([]);
-
-  console.log(user);
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    async function getUsers() {
-      try {
-        const { data } = await api.get("/users");
-        setUserList(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getUsers();
-  }, []);
 
   async function userRegister(formData) {
     try {
       await api.post("/users", formData);
       alert("Cadastro efetuado com sucesso!");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +39,7 @@ export function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider value={{ user, userRegister, userLogin }}>
+    <UserContext.Provider value={{ user, userRegister, userLogin, userLogout }}>
       {children}
     </UserContext.Provider>
   );
