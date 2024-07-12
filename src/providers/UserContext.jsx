@@ -9,6 +9,15 @@ export function UserProvider({ children }) {
 
   const navigate = useNavigate();
 
+  let userId = localStorage.getItem("@USERID");
+
+  useEffect(() => {
+    async function loadUser() {
+      let { data } = await api.get(`/users/${userId}`);
+      setUser(data);
+    }
+  }, []);
+
   async function userRegister(formData) {
     try {
       await api.post("/users", formData);
