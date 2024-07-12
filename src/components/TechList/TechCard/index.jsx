@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import { TechContext } from "../../../providers/TechContext";
+
 export function TechCard({ tech }) {
+  let { deleteTech } = useContext(TechContext);
   return (
     <li>
       <div>
@@ -6,7 +10,7 @@ export function TechCard({ tech }) {
         <div>
           <p>{tech.status}</p>
           <button>/</button>
-          <button>X</button>
+          <button onClick={()=> deleteTech(tech.id)}>X</button>
         </div>
       </div>
     </li>
