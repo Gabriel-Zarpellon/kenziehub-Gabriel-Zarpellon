@@ -13,7 +13,7 @@ export function AddTechModal({ setIsAddTechOpen }) {
     setIsAddTechOpen(false);
   }
   return (
-    <Modal title="Cadastrar Tecnologia" setIsOpen={setIsAddTechOpen}>
+    <Modal title="Cadastrar Tecnologia" setIsOpen={setIsAddTechOpen} value={false}>
       <form onSubmit={handleSubmit(submit)}>
         <FormInput
           name="title"

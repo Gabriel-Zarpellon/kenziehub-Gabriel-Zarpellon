@@ -1,10 +1,10 @@
-export function Modal({ setIsOpen, title, children }) {
+export function Modal({ setIsOpen, title, children, value }) {
 
     return (
       <div role="dialog">
         <div>
           <h3>{title}</h3>
-          <button onClick={() => setIsOpen(false)}>X</button>
+          <button onClick={() => setIsOpen(value)}>X</button>
         </div>
         {children}
       </div>
