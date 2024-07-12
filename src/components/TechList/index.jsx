@@ -5,7 +5,7 @@ import { UserContext } from "../../providers/UserContext";
 
 export function TechList() {
   let { techList } = useContext(TechContext);
-  let { user } = useContext(UserContext);
+  
   return(
     <ul>
         {techList.map(tech => <TechCard key={tech.title} tech={tech}/>)}
