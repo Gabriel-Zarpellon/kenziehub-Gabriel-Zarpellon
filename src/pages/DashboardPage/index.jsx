@@ -4,11 +4,13 @@ import Logo from "../../assets/Logo.svg";
 import { AddTechModal } from "../../components/TechList/AddTechModal";
 import { TechContext } from "../../providers/TechContext";
 import { TechList } from "../../components/TechList";
+import { EditTechModal } from "../../components/TechList/EditTechModal";
 
 export function DashboardPage() {
   let { user, userLogout } = useContext(UserContext);
-  let { techList } = useContext(TechContext);
+  let { techList, editTech } = useContext(TechContext);
   let [isAddTechOpen, setIsAddTechOpen] = useState(false);
+ 
 
   return (
     <>
@@ -25,11 +27,14 @@ export function DashboardPage() {
           <div>
             <h2>Tecnologias</h2>
             <button onClick={() => setIsAddTechOpen(true)}>+</button>
-            {techList.length > 0 ? <TechList/> : null}
+            {techList.length > 0 ? <TechList /> : null}
           </div>
         </section>
         {isAddTechOpen ? (
           <AddTechModal setIsAddTechOpen={setIsAddTechOpen} />
+        ) : null}
+        {editTech ? (
+          <EditTechModal />
         ) : null}
       </main>
     </>
