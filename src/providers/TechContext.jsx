@@ -11,25 +11,28 @@ export function TechProvider({ children }) {
 
   const token = localStorage.getItem("@TOKEN");
 
-  console.log(techList);
   console.log(user?.techs);
 
   useEffect(() => {
     async function getTechs() {
-      try {
-        const {data} = await api.get("/profile", {
+      if (token) {
+        const { data } = await api.get("/profile", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        
-        setTechList(data.techs)
+
+        setTechList(data.techs);
+      } else {
+        setTechList([]);
+      }
+      try {
       } catch (error) {
         console.log(error);
       }
     }
     getTechs();
-  }, []);
+  }, [user]);
 
   async function addTech(formData) {
     try {
@@ -38,7 +41,7 @@ export function TechProvider({ children }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      
+
       setTechList([...techList, data]);
 
       alert("tecnologia adicionada!");
@@ -48,7 +51,6 @@ export function TechProvider({ children }) {
   }
 
   async function deleteTech(deleteId) {
-
     try {
       await api.delete(`/users/techs/${deleteId}`, {
         headers: {
