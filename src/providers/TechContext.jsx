@@ -10,23 +10,25 @@ export function TechProvider({ children }) {
 
   const token = localStorage.getItem("@TOKEN");
 
-console.log(techList);
+  console.log(techList);
 
-  useEffect(() => {
-    async function getTechs() {
-      try {
-        const { data } = await api.get("/users/techs");
-        setTechList(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getTechs();
-  }, []);
+  // useEffect(() => {
+  //   async function getTechs() {
+  //     try {
+  //       const { data } = await api.get("/users/techs", {headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },});
+  //       setTechList(data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   getTechs();
+  // }, []);
 
   async function addTech(formData) {
     try {
-      let {data} = await api.post("/users/techs", formData, {
+      let { data } = await api.post("/users/techs", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -40,8 +42,25 @@ console.log(techList);
     }
   }
 
+  async function deleteTech(deleteId) {
+    try {
+      await api.delete(`/users/techs/${deleteId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      let newTechList = techList.filter((tech) => tech.id != deleteId);
+      setTechList(newTechList);
+    } catch (error) {
+      console.log(error);
+    }
+    alert("Tecnologia excluída!");
+  }
+
+  
+
   return (
-    <TechContext.Provider value={{ techList, addTech }}>
+    <TechContext.Provider value={{ techList, addTech, deleteTech }}>
       {children}
     </TechContext.Provider>
   );
