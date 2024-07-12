@@ -11,7 +11,11 @@ export function RegisterPage() {
   const { userRegister } = useContext(UserContext);
 
   async function submit(formData) {
-    userRegister(formData);
+    if (formData.password == formData.password2) {
+      userRegister(formData);
+    } else {
+      alert("As senhas não são iguais!");
+    }
   }
   return (
     <section>
@@ -45,13 +49,13 @@ export function RegisterPage() {
           placeholder="Digite aqui sua senha"
           register={register}
         />
-        {/* <FormInput
+        <FormInput
           name="password2"
           label="Confirmar Senha"
           type="password"
           placeholder="Digite novamente sua senha"
           register={register}
-        /> */}
+        />
         <FormInput
           name="bio"
           label="Bio"
@@ -67,14 +71,24 @@ export function RegisterPage() {
           register={register}
         />
         <div>
-          <label htmlFor="course_module" >
-            Selecionar Módulo
-          </label>
-          <select name="course_module" defaultValue={"Primeiro módulo (Introdução ao Frontend)"} {...register("course_module")}>
-            <option value="Primeiro módulo (Introdução ao Frontend)">Primeiro módulo (Introdução ao Frontend)</option>
-            <option value="Segundo módulo (Frontend Avançado)">Segundo módulo (Frontend Avançado)</option>
-            <option value="Terceiro módulo (Introdução ao Backend)">Terceiro módulo (Introdução ao Backend)</option>
-            <option value="Quarto módulo (Backend Avançado)">Quarto módulo (Backend Avançado)</option>
+          <label htmlFor="course_module">Selecionar Módulo</label>
+          <select
+            name="course_module"
+            defaultValue={"Primeiro módulo (Introdução ao Frontend)"}
+            {...register("course_module")}
+          >
+            <option value="Primeiro módulo (Introdução ao Frontend)">
+              Primeiro módulo (Introdução ao Frontend)
+            </option>
+            <option value="Segundo módulo (Frontend Avançado)">
+              Segundo módulo (Frontend Avançado)
+            </option>
+            <option value="Terceiro módulo (Introdução ao Backend)">
+              Terceiro módulo (Introdução ao Backend)
+            </option>
+            <option value="Quarto módulo (Backend Avançado)">
+              Quarto módulo (Backend Avançado)
+            </option>
           </select>
         </div>
         <button type="submit">Cadastrar</button>
