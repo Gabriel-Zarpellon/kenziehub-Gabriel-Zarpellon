@@ -4,8 +4,13 @@
 
     --background-grey: #121214;
     --box-background-grey: #212529;
+    --input-background-grey: #343B41;
 
     --white-text-color: #F8F9FA;
     --grey-text-color: #868E96;
 
+}
+
+body{
+    background-color: var(--background-grey);
 }
