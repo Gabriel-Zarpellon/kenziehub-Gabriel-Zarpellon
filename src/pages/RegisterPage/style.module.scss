@@ -1,0 +1,61 @@
+.registerSection {
+  padding-inline: 0.75rem;
+  margin-top: 3rem;
+}
+
+.logoBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2.1875rem;
+
+  button {
+    height: 32px;
+    width: 5rem;
+    color: var(--white-text-color);
+    background-color: var(--box-background-grey);
+    font-size: clamp(0.625rem, 0.536rem + 0.238vw, 0.75rem);
+    border-radius: 0.25rem;
+    
+    @media (min-width: 760px) {
+      width: 4.25rem;
+      height: 2.5rem;
+    }
+  }
+}
+
+.registerBox {
+  height: 49.375rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--box-background-grey);
+  padding-inline: 1.125rem;
+  padding-top: 2rem;
+  gap: 1.125rem;
+  border-radius: 0.25rem;
+  transition: 1s;
+
+  .titleBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.125rem;
+  }
+
+  .formBox {
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+  }
+
+  .selectBox {
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+  }
+
+  @media (min-width: 760px) {
+    transition: 1s;
+    height: 53.75rem;
+  }
+}
