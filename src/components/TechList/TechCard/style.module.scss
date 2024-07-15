@@ -1,0 +1,38 @@
+.cardBox {
+  width: 100%;
+  height: 4.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.875rem;
+  background-color: var(--background-grey);
+  border-radius: 0.25rem;
+  gap: 0.5rem;
+
+  & > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .buttonBox {
+    display: flex;
+    gap: 0.625rem;
+    & > button {
+      color: var(--white-text-color);
+    }
+  }
+
+  @media (min-width: 720px){
+    height: 3rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: .625rem;
+
+    &>div{
+      justify-content: end;
+      gap: 1rem;
+    }
+  }
+}
