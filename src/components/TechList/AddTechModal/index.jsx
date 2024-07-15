@@ -23,7 +23,7 @@ export function AddTechModal({ setIsAddTechOpen }) {
           register={register}
         />
         <div>
-          <label htmlFor="status">Selecionar Status</label>
+          <label className="label" htmlFor="status">Selecionar Status</label>
           <select
             name="status"
             defaultValue={"Iniciante"}

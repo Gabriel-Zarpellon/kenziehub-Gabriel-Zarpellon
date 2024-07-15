@@ -6,9 +6,9 @@ export function TechCard({ tech }) {
   return (
     <li>
       <div>
-        <h3>{tech.title}</h3>
+        <h3 className="title3">{tech.title}</h3>
         <div>
-          <p>{tech.status}</p>
+          <p className="paragraph">{tech.status}</p>
           <button onClick={() => setEditTech(tech)}>/</button>
           <button onClick={()=> deleteTech(tech.id)}>X</button>
         </div>

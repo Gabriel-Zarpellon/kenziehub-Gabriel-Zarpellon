@@ -20,12 +20,12 @@ export function DashboardPage() {
       </header>
       <main>
         <section>
-          <h2>{user.name}</h2>
-          <p>{user.course_module}</p>
+          <h1 className="title1">{user.name}</h1>
+          <p className="paragraph">{user.course_module}</p>
         </section>
         <section>
           <div>
-            <h2>Tecnologias</h2>
+            <h2 className="title2">Tecnologias</h2>
             <button onClick={() => setIsAddTechOpen(true)}>+</button>
             {techList.length > 0 ? <TechList /> : null}
           </div>

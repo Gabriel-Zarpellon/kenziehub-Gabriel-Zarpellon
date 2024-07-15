@@ -24,8 +24,8 @@ export function RegisterPage() {
         <Link to="/">Voltar</Link>
       </div>
       <div>
-        <h2>Crie sua conta</h2>
-        <p>Rápido e grátis, vamos nessa</p>
+        <h1 className="title1">Crie sua conta</h1>
+        <p className="paragraph">Rápido e grátis, vamos nessa</p>
       </div>
       <form onSubmit={handleSubmit(submit)}>
         <FormInput

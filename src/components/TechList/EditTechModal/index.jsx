@@ -28,7 +28,7 @@ export function EditTechModal() {
           register={register}
         />
         <div>
-          <label htmlFor="status">Status</label>
+          <label className="label" htmlFor="status">Status</label>
           <select name="status" {...register("status")}>
             <option value="Iniciante">Iniciante</option>
             <option value="Intermediário">Intermediário</option>
