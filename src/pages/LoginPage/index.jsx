@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/Logo.svg";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
+import styles from "./style.module.scss";
 
 export function LoginPage() {
   let { register, handleSubmit } = useForm();
@@ -14,31 +15,39 @@ export function LoginPage() {
   }
 
   return (
-    <section>
-      <div>
-        <img src={Logo} alt="KenzieHub Logo" />
-      </div>
-      <form onSubmit={handleSubmit(submit)}>
-        <h2>Login</h2>
-        <FormInput
-          name="email"
-          label="E-mail"
-          type="email"
-          placeholder="Digite seu e-mail"
-          register={register}
-        />
-        <FormInput
-          name="password"
-          label="Senha"
-          type="password"
-          placeholder="Digite sua senha"
-          register={register}
-        />
-        <button type="submit">Entrar</button>
-      </form>
-      <div>
-        <p>Ainda não possui conta?</p>
-        <Link to="/register">Cadastre-se</Link>
+    <section className={styles.loginSection}>
+      <div className="container">
+        <div className={styles.logoBox}>
+          <img src={Logo} alt="KenzieHub Logo" />
+        </div>
+        <div className={styles.formBox}>
+          <form onSubmit={handleSubmit(submit)}>
+            <div className={styles.titleBox}>
+              <h1 className="title1">Login</h1>
+            </div>
+            <FormInput
+              name="email"
+              label="E-mail"
+              type="email"
+              placeholder="Digite seu e-mail"
+              register={register}
+            />
+            <FormInput
+              name="password"
+              label="Senha"
+              type="password"
+              placeholder="Digite sua senha"
+              register={register}
+            />
+            <button type="submit" className="button pink">Entrar</button>
+          </form>
+          <div className={styles.loginBottom}>
+            <p className="paragraph">Ainda não possui uma conta?</p>
+            <Link to="/register">
+              <button className="button">Cadastre-se</button>
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );
