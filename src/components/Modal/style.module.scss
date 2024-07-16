@@ -1,0 +1,55 @@
+.modal {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  background-color: #0000004d;
+  padding-inline: 0.8125rem;
+
+  & > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.modalTitle {
+  width: 100%;
+  height: 3.125rem;
+  max-width: 23.0625rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 1.25rem;
+  position: relative;
+  background-color: var(--input-background-grey);
+  border-radius: 0.25rem 0.25rem 0 0;
+
+  & > button {
+    color: var(--white-text-color);
+  }
+}
+
+.modalBox {
+  width: 100%;
+  max-width: 23.0625rem;
+  height: 100%;
+  max-height: 16.25rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--box-background-grey);
+  padding-inline: 1.375rem;
+  padding-top: 1.125rem;
+  border-radius: 0 0 0.25rem 0.25rem;
+  transition: 1s;
+
+  @media (min-width: 790px) {
+    transition: 1s;
+    max-height: 18.75rem;
+  }
+}

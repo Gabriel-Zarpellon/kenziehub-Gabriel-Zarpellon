@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { TechContext } from "../../../providers/TechContext";
 import { Modal } from "../../Modal";
 import { FormInput } from "../../FormInput";
+import styles from "./style.module.scss";
 
 export function EditTechModal() {
   let { editTech, updateTech, setEditTech } = useContext(TechContext);
@@ -19,7 +20,7 @@ export function EditTechModal() {
   }
   return (
     <Modal title="Tecnologia Detalhes" setIsOpen={setEditTech} value={null}>
-      <form onSubmit={handleSubmit(submit)}>
+      <form className={styles.formBox} onSubmit={handleSubmit(submit)}>
         <FormInput
           name="title"
           label="Nome"
@@ -27,15 +28,19 @@ export function EditTechModal() {
           placeholder="Tecnologia"
           register={register}
         />
-        <div>
-          <label className="label" htmlFor="status">Status</label>
-          <select name="status" {...register("status")}>
+        <div className={styles.selectBox}>
+          <label className="label" htmlFor="status">
+            Status
+          </label>
+          <select className="select" name="status" {...register("status")}>
             <option value="Iniciante">Iniciante</option>
             <option value="Intermediário">Intermediário</option>
             <option value="Avançado">Avançado</option>
           </select>
         </div>
-        <button type="submit">Salvar Alterações</button>
+        <button className="button pink" type="submit">
+          Salvar Alterações
+        </button>
       </form>
     </Modal>
   );

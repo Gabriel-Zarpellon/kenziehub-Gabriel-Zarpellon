@@ -3,6 +3,7 @@ import { Modal } from "../../Modal";
 import { FormInput } from "../../FormInput";
 import { useContext } from "react";
 import { TechContext } from "../../../providers/TechContext";
+import styles from "./style.module.scss";
 
 export function AddTechModal({ setIsAddTechOpen }) {
   let { register, handleSubmit } = useForm();
@@ -13,8 +14,12 @@ export function AddTechModal({ setIsAddTechOpen }) {
     setIsAddTechOpen(false);
   }
   return (
-    <Modal title="Cadastrar Tecnologia" setIsOpen={setIsAddTechOpen} value={false}>
-      <form onSubmit={handleSubmit(submit)}>
+    <Modal
+      title="Cadastrar Tecnologia"
+      setIsOpen={setIsAddTechOpen}
+      value={false}
+    >
+      <form onSubmit={handleSubmit(submit)} className={styles.formBox}>
         <FormInput
           name="title"
           label="Nome"
@@ -22,9 +27,12 @@ export function AddTechModal({ setIsAddTechOpen }) {
           placeholder="Tecnologia"
           register={register}
         />
-        <div>
-          <label className="label" htmlFor="status">Selecionar Status</label>
+        <div className={styles.selectBox}>
+          <label className="label" htmlFor="status">
+            Selecionar Status
+          </label>
           <select
+            className="select"
             name="status"
             defaultValue={"Iniciante"}
             {...register("status")}
@@ -34,7 +42,9 @@ export function AddTechModal({ setIsAddTechOpen }) {
             <option value="Avançado">Avançado</option>
           </select>
         </div>
-        <button type="submit">Cadastrar Tecnologia</button>
+        <button className="button pink" type="submit">
+          Cadastrar Tecnologia
+        </button>
       </form>
     </Modal>
   );
