@@ -26,6 +26,11 @@ export function UserProvider({ children }) {
       navigate("/");
     } catch (error) {
       console.log(error);
+      if (error.response.status == 400) {
+        toast.error("A senha deve conter no mínimo 6 caracteres!");
+      } else {
+        toast.error("E-mail já cadastrado!");
+      }
     }
   }
 
@@ -38,7 +43,7 @@ export function UserProvider({ children }) {
       navigate("/dashboard");
     } catch (error) {
       console.log(error);
-      toast.error("Falha na autenticação!");
+      toast.error("E-mail ou senha incorretos!");
     }
   }
 
@@ -51,7 +56,6 @@ export function UserProvider({ children }) {
 
   return (
     <UserContext.Provider value={{ user, userRegister, userLogin, userLogout }}>
-      
       <ToastContainer
         position="top-right"
         autoClose={3000}
