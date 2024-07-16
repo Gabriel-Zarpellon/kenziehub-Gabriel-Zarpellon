@@ -52,4 +52,8 @@
   padding-left: 0.75rem;
   font-size: clamp(0.8125rem, 0.571rem + 0.476vw, 1rem);
   font-weight: 400;
+
+  &:valid {
+    outline: 1px solid var(--white-text-color);
+  }
 }
