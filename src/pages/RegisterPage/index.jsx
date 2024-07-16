@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
 import styles from "./style.module.scss";
+import { toast } from "react-toastify";
 
 export function RegisterPage() {
   const { register, handleSubmit } = useForm();
@@ -15,7 +16,7 @@ export function RegisterPage() {
     if (formData.password == formData.password2) {
       userRegister(formData);
     } else {
-      alert("As senhas não são iguais!");
+      toast.error("As senhas não correspondem!");
     }
   }
 

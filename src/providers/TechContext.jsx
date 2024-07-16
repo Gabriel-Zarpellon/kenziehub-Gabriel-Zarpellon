@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
 import { api } from "../services/api";
+import { toast } from "react-toastify";
 
 export const TechContext = createContext({});
 
@@ -41,10 +42,8 @@ export function TechProvider({ children }) {
           Authorization: `Bearer ${token}`,
         },
       });
-
       setTechList([...techList, data]);
-
-      alert("tecnologia adicionada!");
+      toast.success("Tecnologia adicionada!");
     } catch (error) {
       console.log(error);
     }
@@ -62,7 +61,7 @@ export function TechProvider({ children }) {
     } catch (error) {
       console.log(error);
     }
-    alert("Tecnologia excluída!");
+    toast.success("Tecnologia excluída!");
   }
 
   async function updateTech(formData) {
@@ -81,8 +80,10 @@ export function TechProvider({ children }) {
       });
       setTechList(newTechList);
       setEditTech(null);
+      toast.success("Tecnologia atualizada!");
     } catch (error) {
       console.log(error);
+      toast.error("Falha ao atualizar tecnologia!");
     }
   }
 

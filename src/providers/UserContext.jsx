@@ -1,7 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services/api.js";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const UserContext = createContext({});
 
 export function UserProvider({ children }) {
@@ -21,7 +22,7 @@ export function UserProvider({ children }) {
   async function userRegister(formData) {
     try {
       await api.post("/users", formData);
-      alert("Cadastro efetuado com sucesso!");
+      toast.success("Cadastro efetuado com sucesso!");
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -37,6 +38,7 @@ export function UserProvider({ children }) {
       navigate("/dashboard");
     } catch (error) {
       console.log(error);
+      toast.error("Falha na autenticação!");
     }
   }
 
@@ -49,6 +51,19 @@ export function UserProvider({ children }) {
 
   return (
     <UserContext.Provider value={{ user, userRegister, userLogin, userLogout }}>
+      
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       {children}
     </UserContext.Provider>
   );
