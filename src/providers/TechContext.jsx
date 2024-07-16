@@ -12,8 +12,6 @@ export function TechProvider({ children }) {
 
   const token = localStorage.getItem("@TOKEN");
 
-  console.log(user?.techs);
-
   useEffect(() => {
     async function getTechs() {
       if (token) {
