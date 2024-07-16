@@ -2,13 +2,16 @@ import { useForm } from "react-hook-form";
 import { FormInput } from "../../components/FormInput";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/Logo.svg";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../providers/UserContext";
 import styles from "./style.module.scss";
+import { IoEye } from "react-icons/io5";
+import { IoEyeOff } from "react-icons/io5";
 
 export function LoginPage() {
   let { register, handleSubmit } = useForm();
   let { userLogin } = useContext(UserContext);
+  let [showPassword, setShowPassword] = useState(false);
 
   async function submit(formData) {
     userLogin(formData);
@@ -32,14 +35,24 @@ export function LoginPage() {
               placeholder="Digite seu e-mail"
               register={register}
             />
-            <FormInput
-              name="password"
-              label="Senha"
-              type="password"
-              placeholder="Digite sua senha"
-              register={register}
-            />
-            <button type="submit" className="button pink">Entrar</button>
+            <div className={styles.passwordBox}>
+              <FormInput
+                name="password"
+                label="Senha"
+                type={showPassword ? "text" : "password"}
+                placeholder="Digite sua senha"
+                register={register}
+              />
+              <div className={styles.eye}>
+                <button type="button" onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <IoEyeOff size={16} /> : <IoEye size={16} />}
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" className="button pink">
+              Entrar
+            </button>
           </form>
           <div className={styles.loginBottom}>
             <p className="paragraph">Ainda não possui uma conta?</p>

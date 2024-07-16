@@ -32,6 +32,7 @@
   border-radius: 0.25rem;
   gap: 1.6875rem;
   transition: 1s;
+
   form {
     width: 100%;
 
@@ -40,9 +41,29 @@
     }
   }
 
+  .passwordBox {
+    position: relative;
+  }
+
+  .eye {
+    position: absolute;
+    right: 15px;
+    top: 43px;
+    transition: 1s;
+
+    & > button {
+      color: var(--grey-text-color);
+    }
+  }
+
   @media (min-width: 760px) {
     transition: 1s;
     height: 29.5rem;
+
+    .eye {
+      transition: 1s;
+      top: 48px;
+    }
   }
 }
 
