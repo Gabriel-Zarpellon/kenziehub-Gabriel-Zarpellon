@@ -7,10 +7,12 @@ export const UserContext = createContext({});
 
 export function UserProvider({ children }) {
   let [user, setUser] = useState(null);
+  let [userTechs, setUserTechs] = useState([]);
 
   const navigate = useNavigate();
 
   let userId = localStorage.getItem("@USERID");
+  const token = localStorage.getItem("@TOKEN");
 
   useEffect(() => {
     async function loadUser() {
@@ -18,6 +20,27 @@ export function UserProvider({ children }) {
       setUser(data);
     }
   }, []);
+
+  useEffect(() => {
+    async function getTechs() {
+      if (token) {
+        const { data } = await api.get("/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        setUserTechs(data.techs);
+      } else {
+        setUserTechs([]);
+      }
+      try {
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getTechs();
+  }, [user]);
 
   async function userRegister(formData) {
     try {
@@ -55,7 +78,7 @@ export function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider value={{ user, userRegister, userLogin, userLogout }}>
+    <UserContext.Provider value={{ user, userRegister, userLogin, userLogout, userTechs, setUserTechs }}>
       <ToastContainer
         position="top-right"
         autoClose={3000}

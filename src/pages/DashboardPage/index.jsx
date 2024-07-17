@@ -9,8 +9,8 @@ import { IoMdAdd } from "react-icons/io";
 import styles from "./style.module.scss";
 
 export function DashboardPage() {
-  let { user, userLogout } = useContext(UserContext);
-  let { techList, editTech } = useContext(TechContext);
+  let { user, userLogout, userTechs } = useContext(UserContext);
+  let { editTech } = useContext(TechContext);
   let [isAddTechOpen, setIsAddTechOpen] = useState(false);
 
   return (
@@ -37,7 +37,7 @@ export function DashboardPage() {
               </button>
             </div>
             <div className={styles.techListBox}>
-              {techList.length > 0 ? <TechList /> : null}
+              {userTechs.length > 0 ? <TechList /> : null}
             </div>
           </div>
         </section>

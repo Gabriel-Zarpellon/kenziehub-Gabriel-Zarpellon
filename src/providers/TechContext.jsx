@@ -1,37 +1,37 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { UserContext } from "./UserContext";
+import { createContext, useContext, useState } from "react";
 import { api } from "../services/api";
 import { toast } from "react-toastify";
+import { UserContext } from "./UserContext";
 
 export const TechContext = createContext({});
 
 export function TechProvider({ children }) {
-  let { user } = useContext(UserContext);
-  let [techList, setTechList] = useState([]);
+  let { userTechs, setUserTechs } = useContext(UserContext);
+  // let [techList, setTechList] = useState([]);
   let [editTech, setEditTech] = useState(null);
 
   const token = localStorage.getItem("@TOKEN");
 
-  useEffect(() => {
-    async function getTechs() {
-      if (token) {
-        const { data } = await api.get("/profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+  // useEffect(() => {
+  //   async function getTechs() {
+  //     if (token) {
+  //       const { data } = await api.get("/profile", {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
 
-        setTechList(data.techs);
-      } else {
-        setTechList([]);
-      }
-      try {
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getTechs();
-  }, [user]);
+  //       setTechList(data.techs);
+  //     } else {
+  //       setTechList([]);
+  //     }
+  //     try {
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   getTechs();
+  // }, [user]);
 
   async function addTech(formData) {
     try {
@@ -40,7 +40,7 @@ export function TechProvider({ children }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      setTechList([...techList, data]);
+      setUserTechs([...userTechs, data]);
       toast.success("Tecnologia adicionada!");
     } catch (error) {
       console.log(error);
@@ -54,8 +54,8 @@ export function TechProvider({ children }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      let newTechList = techList.filter((tech) => tech.id != deleteId);
-      setTechList(newTechList);
+      let newTechList = userTechs.filter((tech) => tech.id != deleteId);
+      setUserTechs(newTechList);
     } catch (error) {
       console.log(error);
     }
@@ -69,14 +69,14 @@ export function TechProvider({ children }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      let newTechList = techList.map((tech) => {
+      let newTechList = userTechs.map((tech) => {
         if (tech.id == editTech.id) {
           return data;
         } else {
           return tech;
         }
       });
-      setTechList(newTechList);
+      setUserTechs(newTechList);
       setEditTech(null);
       toast.success("Tecnologia atualizada!");
     } catch (error) {
@@ -88,7 +88,6 @@ export function TechProvider({ children }) {
   return (
     <TechContext.Provider
       value={{
-        techList,
         addTech,
         deleteTech,
         editTech,
