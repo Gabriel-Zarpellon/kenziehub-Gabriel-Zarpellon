@@ -19,6 +19,7 @@ export function UserProvider({ children }) {
       let { data } = await api.get(`/users/${userId}`);
       setUser(data);
     }
+    loadUser();
   }, []);
 
   useEffect(() => {
@@ -78,7 +79,16 @@ export function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider value={{ user, userRegister, userLogin, userLogout, userTechs, setUserTechs }}>
+    <UserContext.Provider
+      value={{
+        user,
+        userRegister,
+        userLogin,
+        userLogout,
+        userTechs,
+        setUserTechs,
+      }}
+    >
       <ToastContainer
         position="top-right"
         autoClose={3000}

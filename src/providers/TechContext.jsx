@@ -7,31 +7,9 @@ export const TechContext = createContext({});
 
 export function TechProvider({ children }) {
   let { userTechs, setUserTechs } = useContext(UserContext);
-  // let [techList, setTechList] = useState([]);
   let [editTech, setEditTech] = useState(null);
 
   const token = localStorage.getItem("@TOKEN");
-
-  // useEffect(() => {
-  //   async function getTechs() {
-  //     if (token) {
-  //       const { data } = await api.get("/profile", {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       });
-
-  //       setTechList(data.techs);
-  //     } else {
-  //       setTechList([]);
-  //     }
-  //     try {
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  //   getTechs();
-  // }, [user]);
 
   async function addTech(formData) {
     try {
