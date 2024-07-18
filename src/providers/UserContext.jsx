@@ -12,12 +12,25 @@ export function UserProvider({ children }) {
   const navigate = useNavigate();
 
   let userId = localStorage.getItem("@USERID");
-  const token = localStorage.getItem("@TOKEN");
+  let token = localStorage.getItem("@TOKEN");
 
   useEffect(() => {
     async function loadUser() {
-      let { data } = await api.get(`/users/${userId}`);
-      setUser(data);
+      if (token && userId) {
+        try {
+          let { data } = await api.get(`/users/${userId}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setUser(data);
+          navigate("/dashboard");
+        } catch (error) {
+          console.log(error);
+          localStorage.removeItem("@TOKEN");
+          localStorage.removeItem("@USERID");
+        }
+      }
     }
     loadUser();
   }, []);

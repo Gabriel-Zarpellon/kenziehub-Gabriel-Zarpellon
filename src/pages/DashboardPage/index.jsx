@@ -24,8 +24,8 @@ export function DashboardPage() {
       <main>
         <section className={styles.titleSection}>
           <div className={`dashboardContainer ${styles.titleBox}`}>
-            <h1 className="title1">{user.name}</h1>
-            <p className="paragraph">{user.course_module}</p>
+            <h1 className="title1">{user?.name}</h1>
+            <p className="paragraph">{user?.course_module}</p>
           </div>
         </section>
         <section>
@@ -37,7 +37,7 @@ export function DashboardPage() {
               </button>
             </div>
             <div className={styles.techListBox}>
-              {userTechs.length > 0 ? <TechList /> : null}
+              {userTechs?.length > 0 ? <TechList /> : null}
             </div>
           </div>
         </section>
