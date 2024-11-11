@@ -1,4 +1,4 @@
-# KenzieHub (Redux)
+# KenzieHub
 
 ## Descrição do projeto
 
