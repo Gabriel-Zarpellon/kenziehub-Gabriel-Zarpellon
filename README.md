@@ -4,7 +4,7 @@
 
 O projeto KenzieHub consiste em uma aplicação onde é possível cadastrar um usuário e realizar o login, tendo acesso assim a uma página onde existem funções para a criação, atualização e exclusão de tecnologias possuídas pelo usuário e seu nível de conhecimento.
 
-As funções desse projeto foram desenvolvidas em React, utilizando Context e estados em seus funcionamentos. A estilização foi desenvolvida com SASS.
+As funções desse projeto foram desenvolvidas em React, utilizando Context e estados em seus funcionamentos, que trabalham com o consumo de uma API. A estilização foi desenvolvida com SASS.
 
 
 ## Implementações do projeto
